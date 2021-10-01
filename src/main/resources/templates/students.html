@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+
+
+
+</head>
+<body>
+
+
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">
+  <dt><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-diamond-fill" viewBox="0 0 16 16">
+  <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098l2.904 2.905z"/>
+</svg>
+   STUDENT MANAGEMENT SYSTEM </dt>
+  </a>
+</nav>
+
+
+
+
+<div class="container mt-3">
+	<div class = "row justify-content-center" >r
+		<h4 class="text-center text-info font-weight-bold text-uppercase"> <center>List Students</center></h4>	
+	</div >
+	
+	<div class= "row">
+		<div class="col-lg-3">
+			<a th:href = "@{/students/new}" class="btn btn-secondary btn-sm btn-lg active mb-3" role="button" aria-pressed="true">Add Student</a>
+		</div>
+	</div>
+	<table class="table table-striped table-bordered">
+		<thead class="thead-dark">
+			<tr>
+				<th>Student First Name</th>
+				<th>Student Last Name</th>
+				<th>Student Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "student: ${students}">
+				<td th:text = "${student.firstName}"></td>
+				<td th:text = "${student.lastName}"></td>
+				<td th:text = "${student.email}"></td>
+				<td>
+				<a th:href = "@{/students/edit/{id}(id=${student.id})} " class="btn btn-primary" >
+				Update
+				</a>
+				<a th:href = "@{/students/{id}(id=${student.id})} " class="btn btn-danger" >
+				Delete
+				</a>
+				
+				</td>
+			</tr>
+		</tbody>
+		
+	</table>
+</div>
+
+
+
+
+</body>
+</html>
